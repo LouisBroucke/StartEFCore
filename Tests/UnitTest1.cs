@@ -6,8 +6,13 @@ namespace Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ToevoegenLand_EenLandToevoegen_LandIsToegevoegd()
         {
+            //Arrange: opstelling test
+
+            //Act: uitvoeren method
+
+            //Assert: controle
         }
     }
 }
