@@ -13,7 +13,7 @@ namespace Tests
     [TestClass]
     public class UnitTestsInMemory
     {
-        DbContextOptionsBuilder<EFOpleidingenContext> options;
+        DbContextOptions<EFOpleidingenContext> options;
         [TestInitialize]
         public void Initializer()
         {

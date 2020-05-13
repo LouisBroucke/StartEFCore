@@ -24,9 +24,13 @@ namespace Tests
             var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = ":memory:" };
 
             var connection = new SqliteConnection(connectionStringBuilder.ToString());
+            connection.Open();
 
             var options = new DbContextOptionsBuilder<EFOpleidingenContext>().UseSqlite(connection).Options;
             using var context = new EFOpleidingenContext(options);
+
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             context.Campussen.Add(new Campus()
             {
@@ -108,9 +112,13 @@ namespace Tests
             var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = ":memory:" };
 
             var connection = new SqliteConnection(connectionStringBuilder.ToString());
+            connection.Open();
 
             var options = new DbContextOptionsBuilder<EFOpleidingenContext>().UseSqlite(connection).Options;
             using var context = new EFOpleidingenContext(options);
+
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             //Act
             var docentService = new DocentService(context);
@@ -127,9 +135,13 @@ namespace Tests
             var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = ":memory:" };
 
             var connection = new SqliteConnection(connectionStringBuilder.ToString());
+            connection.Open();
 
             var options = new DbContextOptionsBuilder<EFOpleidingenContext>().UseSqlite(connection).Options;
             using var context = new EFOpleidingenContext(options);
+
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             context.Landen.Add(new Land()
             {
@@ -138,6 +150,8 @@ namespace Tests
             });
 
             context.SaveChanges();
+
+            context.Campussen.Add(new Campus() { CampusId = 1, Naam = "Andros", Straat = "Somersstraat", Huisnummer = "22", Postcode = "2018", Gemeente = "Antwerpen" });
 
             var docent = new Docent()
             {
